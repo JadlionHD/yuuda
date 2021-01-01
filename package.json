@@ -1,0 +1,27 @@
+{
+  "name": "jadmaid-umu",
+  "version": "1.0.0",
+  "description": "a discord bot",
+  "main": "app.js",
+  "scripts": {
+    "start": "node src/app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JadlionHD/jadmaid-umu.git"
+  },
+  "author": "JadlionHD",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/JadlionHD/jadmaid-umu/issues"
+  },
+  "homepage": "https://github.com/JadlionHD/jadmaid-umu#readme",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "body-parser": "^1.19.0",
+    "dotenv": "^8.2.0",
+    "ejs": "^3.1.5",
+    "eris": "^0.14.0",
+    "express": "^4.17.1"
+  }
+}
