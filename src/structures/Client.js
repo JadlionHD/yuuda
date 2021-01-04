@@ -29,11 +29,7 @@ class ClientBot extends CommandClient {
         			},
                     cooldownMessage: (m => `${m.author.mention}, that's too quick poi!!`),
                     permissionMessage: (m => {
-                        let empty = "";
-                        Object.entries(m.command.requirements.permissions).forEach(([key, val]) => {
-                            empty += `\`${key}\` `
-                        })
-                        return `${m.author.mention}, you been missing some permissions poi!, including: \`${empty}\``;
+                        return `${m.author.mention}, you been missing some permissions poi!, including: \`${Object.entries(m.command.requirements.permissions).map(([str, value]) => `${str[0] + str.slice(1)}`).join(", ")}\``;
                     })
         		})
         	}

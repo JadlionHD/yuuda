@@ -6,7 +6,7 @@ module.exports.config = {
 	name: "ping",
 	aliases: ["pong"],
 	description: "a ping pong test",
-	usage: "j!ping",
+	usage: "y!ping",
 	cooldown: 5,
 	requirements: {
 		permissions: {}
