@@ -15,8 +15,6 @@ module.exports.config = {
 	usage: "j!howgay <mention>",
 	cooldown: 5,
 	requirements: {
-		permissions: {
-			"administrator": false
-		}
+		permissions: {}
 	}
 }

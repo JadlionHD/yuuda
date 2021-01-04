@@ -16,8 +16,6 @@ module.exports.config = {
 	usage: "j!help <commands>",
 	cooldown: 5,
 	requirements: {
-		permissions: {
-			"administrator": false
-		}
+		permissions: {}
 	}
 }

@@ -9,8 +9,6 @@ module.exports.config = {
 	usage: "j!ping",
 	cooldown: 5,
 	requirements: {
-		permissions: {
-			"administrator": false
-		}
+		permissions: {}
 	}
 }

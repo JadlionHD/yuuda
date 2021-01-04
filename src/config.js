@@ -15,7 +15,7 @@ module.exports = {
 		}
 	},
 	CommandOptions: {
-		prefix: ["j!", "jad!", "@mention"],
+		prefix: ["y!", "yuda ", "poi ", "@mention"],
 		defaultHelpCommand: false,
 		description: "A JadMaid Bot",
 		owner: "JadlionHD"

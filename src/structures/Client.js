@@ -25,15 +25,15 @@ class ClientBot extends CommandClient {
         			cooldown: cmd.config.cooldown * 1000,
         			usage: cmd.config.usage,
         			requirements: {
-        				permissions: cmd.config.requirements.permissions
+        				permissions: cmd.config.requirements.permissions || {} // empty if there's nothing
         			},
-                    cooldownMessage: (m => `${m.author.mention}, um customer-sama, that's too quick`),
+                    cooldownMessage: (m => `${m.author.mention}, that's too quick poi!!`),
                     permissionMessage: (m => {
                         let empty = "";
                         Object.entries(m.command.requirements.permissions).forEach(([key, val]) => {
                             empty += `\`${key}\` `
                         })
-                        return `${m.author.mention}, you been missing permissions of ${empty}`;
+                        return `${m.author.mention}, you been missing some permissions poi!, including: \`${empty}\``;
                     })
         		})
         	}
