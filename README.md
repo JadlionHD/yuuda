@@ -1,2 +1,1 @@
-# jadmaid-umu
-upcoming jadmaid source
+# yuudachi-poi
