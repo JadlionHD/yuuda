@@ -1,5 +1,5 @@
 {
-  "name": "jadmaid-umu",
+  "name": "yuudachi-poi",
   "version": "1.0.0",
   "description": "a discord bot",
   "main": "app.js",
@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/JadlionHD/jadmaid-umu.git"
+    "url": "git+https://github.com/JadlionHD/yuudachi-poi.git"
   },
   "author": "JadlionHD",
-  "license": "GPL-3.0",
+  "license": "BSD-3-Clause",
   "bugs": {
-    "url": "https://github.com/JadlionHD/jadmaid-umu/issues"
+    "url": "https://github.com/JadlionHD/yuudachi-poi/issues"
   },
-  "homepage": "https://github.com/JadlionHD/jadmaid-umu#readme",
+  "homepage": "https://github.com/JadlionHD/yuudachi-poi#readme",
   "dependencies": {
     "axios": "^0.21.1",
     "body-parser": "^1.19.0",
