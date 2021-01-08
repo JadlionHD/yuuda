@@ -7,6 +7,7 @@ class ClientBot extends CommandClient {
 
 		this.request = require("axios");
 		this.config = require("../config.js");
+		this.util = require("./Util.js");
 		this._commandsLoad(this);
 		this._eventLoad(this);
 	}
