@@ -44,7 +44,7 @@ query {
 			}).then(result => {
 				resolve(result.data)
 			}).catch(err => {
-				reject(err)
+				reject(err.data)
 			})
 		})
 	}
@@ -77,7 +77,7 @@ query {
 			}).then(result => {
 				resolve(result.data)
 			}).catch(err => {
-				reject(err)
+				reject(err.data)
 			})	
 		})
 	}

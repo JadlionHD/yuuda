@@ -105,7 +105,7 @@ module.exports = class Util {
       return `${year}-${month}-${date} ${hours}:${minutes}:${seconds}`
     }
 
-    static splitter(str, l) {
+    static trim(str, l) {
       var strs = [];
       while(str.length > l){
           var pos = str.substring(0, l).lastIndexOf(' ');

@@ -241,6 +241,13 @@ encodeurl@~1.0.2:
   resolved "https://registry.yarnpkg.com/encodeurl/-/encodeurl-1.0.2.tgz#ad3ff4c86ec2d029322f5a02c3a9a606c95b3f59"
   integrity sha1-rT/0yG7C0CkyL1oCw6mmBslbP1k=
 
+eris-collector@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/eris-collector/-/eris-collector-1.0.1.tgz#f23d518723bacd55b6e5a1dafb0902e11e3aafd1"
+  integrity sha512-qAuIP8//rMaTFs/3J7Ggk2tzWuNbFqJsAP8DuT9MLpNYc6f0u+Cifpa06//oxGQOWl4sWY1+0ncJDfRvlz2PMg==
+  dependencies:
+    events "^3.1.0"
+
 eris@^0.14.0:
   version "0.14.0"
   resolved "https://registry.yarnpkg.com/eris/-/eris-0.14.0.tgz#0d13391c0fc1a7b678b2f8d1fc3ec6aef05700d3"
@@ -265,6 +272,11 @@ etag@~1.8.1:
   version "1.8.1"
   resolved "https://registry.yarnpkg.com/etag/-/etag-1.8.1.tgz#41ae2eeb65efa62268aebfea83ac7d79299b0887"
   integrity sha1-Qa4u62XvpiJorr/qg6x9eSmbCIc=
+
+events@^3.1.0:
+  version "3.2.0"
+  resolved "https://registry.yarnpkg.com/events/-/events-3.2.0.tgz#93b87c18f8efcd4202a461aec4dfc0556b639379"
+  integrity sha512-/46HWwbfCX2xTawVfkKLGxMifJYQBWMwY1mjywRtb4c9x8l5NP3KoJtnIOiL1hfdRkIuYhETxQlo62IF8tcnlg==
 
 express@^4.17.1:
   version "4.17.1"
