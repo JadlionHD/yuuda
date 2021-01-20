@@ -1,4 +1,4 @@
-module.exports = class Util {    
+module.exports = class Util {
     static randomNumber(min, max) {
         if (!(max instanceof Number) || !(min instanceof Number)) {
             return null;
@@ -122,31 +122,17 @@ module.exports = class Util {
 
 
     static isAlphaNumeric(str) {
-    var code, i, len;
+    	var code, i, len;
 
-    for (i = 0, len = str.length; i < len; i++) {
-      code = str.charCodeAt(i);
-      if (!(code > 47 && code < 58) && // numeric (0-9)
-          !(code > 64 && code < 91) && // upper alpha (A-Z)
-          !(code > 96 && code < 123) && // lower alpha (a-z)
-          !(code === 32)) { // including spacebar
-        return false;
-      }
+    	for (i = 0, len = str.length; i < len; i++) {
+      		code = str.charCodeAt(i);
+      		if (!(code > 47 && code < 58) && // numeric (0-9)
+          	!(code > 64 && code < 91) && // upper alpha (A-Z)
+          	!(code > 96 && code < 123) && // lower alpha (a-z)
+          	!(code === 32)) { // including spacebar
+        		return false;
+    	}
     }
     return true;
   };
-  
-    static clean (text) {
-        if (typeof(text) === "string") return text.replace(/`/g, "`" + String.fromCharCode(8203)).replace(/@/g, "@" + String.fromCharCode(8203));
-    
-     else
-    
-      return text;
-};
-
-static capitalizeFirstLetter(string) {
-  return string.charAt(0).toUpperCase() + string.slice(1);
 }
-  
-   
-};

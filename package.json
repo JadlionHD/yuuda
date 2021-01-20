@@ -1,30 +1,33 @@
 {
-  "name": "yuudachi-poi",
-  "version": "1.0.0",
-  "description": "a discord bot",
-  "main": "app.js",
-  "scripts": {
-    "start": "node src/app.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/JadlionHD/yuudachi-poi.git"
-  },
-  "author": "JadlionHD",
-  "license": "BSD-3-Clause",
-  "bugs": {
-    "url": "https://github.com/JadlionHD/yuudachi-poi/issues"
-  },
-  "homepage": "https://github.com/JadlionHD/yuudachi-poi#readme",
-  "dependencies": {
-    "axios": "^0.21.1",
-    "body-parser": "^1.19.0",
-    "canvas": "^2.6.1",
-    "dotenv": "^8.2.0",
-    "ejs": "^3.1.5",
-    "eris": "^0.14.0",
-    "eris-collector": "^1.0.1",
-    "express": "^4.17.1"
-  },
-  "devDependencies": {}
+	"name": "yuudachi-poi",
+	"version": "1.0.0-alpha",
+	"description": "a discord bot",
+	"main": "app.js",
+	"scripts": {
+		"start": "node src/app.js"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/JadlionHD/yuudachi-poi.git"
+	},
+	"author": "JadlionHD (jadlion.dev@gmail.com)",
+	"license": "BSD-3-Clause",
+	"bugs": {
+		"url": "https://github.com/JadlionHD/yuudachi-poi/issues"
+	},
+	"homepage": "https://github.com/JadlionHD/yuudachi-poi#readme",
+	"dependencies": {
+		"axios": "^0.21.1",
+		"body-parser": "^1.19.0",
+		"canvas": "^2.6.1",
+		"chalk": "^4.1.0",
+		"dotenv": "^8.2.0",
+		"ejs": "^3.1.5",
+		"eris": "^0.14.0",
+		"eris-collector": "^1.0.1",
+		"express": "^4.17.1",
+		"moment": "^2.29.1",
+		"mongoose": "^5.11.12"
+	},
+	"devDependencies": {}
 }
