@@ -1,3 +1,3 @@
 module.exports = async (client, err, id) => {
-	console.log("Handling shard error")
+	client.logger.log("Handled shards error", "error");
 }
