@@ -9,5 +9,8 @@ module.exports = {
         "ecmaVersion": 12
     },
     "rules": {
+        "no-mixed-spaces-and-tabs": ["off", "smart-tabs"],
+        "no-unused-vars": "warn",
+        "no-extra-semi": "warn"
     }
 };
