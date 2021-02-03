@@ -4,7 +4,8 @@
 	"description": "a discord bot",
 	"main": "src/app.js",
 	"scripts": {
-		"start": "yarn run lint && node src/app.js",
+		"start": "npm run lint && node src/app.js",
+		"start:yarn": "yarn run lint && node src/app.js",
 		"lint": "./node_modules/.bin/eslint src/**",
 		"lint:fix": "./node_modules/.bin/eslint src/** --fix"
 	},

@@ -1,4 +1,4 @@
-const { CommandClient, Collection} = require("eris");
+const { CommandClient } = require("eris");
 const { readdirSync } = require("fs");
 
 class ClientBot extends CommandClient {
@@ -20,7 +20,16 @@ class ClientBot extends CommandClient {
         	for(let file of commands) {
         		let name = file.replace('.js', '').toLowerCase();
         		let cmd = require(`../commands/${dir}/${name}`);
-        		client.registerCommand(cmd.config.name, async(msg, args) => cmd.run(client, msg, args), {
+
+        		client.registerCommand(cmd.config.name, async(msg, args) => {
+                    let p = {
+                        msg: msg,
+                        client: client,
+                        args: args
+                    } // package for commands with only 1 paramenters
+
+                    cmd.run(p)
+                }, {
         			caseInsensitive: true,
         			aliases: cmd.config.aliases,
         			description: cmd.config.description,

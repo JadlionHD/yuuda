@@ -1,15 +1,15 @@
 const Guild = require("../../db/schemas/channelNews.js");
 
-module.exports.run = async (client, msg, args) => {
-	const data = await Guild.findOne({ channel: msg.channel.id });
+module.exports.run = async (p) => {
+	const data = await Guild.findOne({ channel: p.msg.channel.id });
 	if(data) {
-		msg.channel.createMessage("Data has already exist");
+		p.msg.channel.createMessage("Data has already exist");
 	} else {
 		const dataNews = new Guild({
-			channel: msg.channel.id
+			channel: p.msg.channel.id
 		})
 		dataNews.save();
-		msg.channel.createMessage("Sucessfully saving channel");
+		p.msg.channel.createMessage("Sucessfully saving channel");
 	}
 }
 
