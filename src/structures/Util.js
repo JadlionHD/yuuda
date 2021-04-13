@@ -10,7 +10,7 @@ module.exports = class Util {
         }
 
         return random;
-    };
+    }
 
     static randomString(length, useCapital, useNumber) {
         if (
@@ -40,38 +40,38 @@ module.exports = class Util {
         }
 
         return strings;
-    };
+    }
   
     static timeParser(ms){
       
-      let seconds = ms / 1000;
-      let days = parseInt(seconds / 86400);
-      seconds = seconds % 86400;
-      let hours = parseInt(seconds / 3600);
-      seconds = seconds % 3600;
-      let minutes = parseInt(seconds / 60);
-      seconds = parseInt(seconds % 60);
+        let seconds = ms / 1000;
+        let days = parseInt(seconds / 86400);
+        seconds = seconds % 86400;
+        let hours = parseInt(seconds / 3600);
+        seconds = seconds % 3600;
+        let minutes = parseInt(seconds / 60);
+        seconds = parseInt(seconds % 60);
       
-      if (days) {
-        return `${days}d ${hours}h ${minutes}m ${seconds}s`;
-      }
-      else if (hours) {
-        return `${hours}h ${minutes}m ${seconds}s`;
-      }
-      else if (minutes) {
-        return `${minutes}m ${seconds}s`;
-      }
-      return `${seconds}s`;
+        if (days) {
+            return `${days}d ${hours}h ${minutes}m ${seconds}s`;
+        }
+        else if (hours) {
+            return `${hours}h ${minutes}m ${seconds}s`;
+        }
+        else if (minutes) {
+            return `${minutes}m ${seconds}s`;
+        }
+        return `${seconds}s`;
       
-    };
+    }
   
     static codeBlock(string, code) {
         if(code) return `\`\`\`${code}\n${string}\`\`\``;
         return `\`\`\`${string}\`\`\``;
-    };
+    }
 
     static timeStamp(ms) {
-        var time = new Date(ms).toLocaleDateString("en-US")
+        var time = new Date(ms).toLocaleDateString("en-US");
         return time;
     }
 
@@ -94,30 +94,30 @@ module.exports = class Util {
     }
 
     static getCurrentTime() {
-      let date_ob = new Date();
-      let date = ("0" + date_ob.getDate()).slice(-2);
-      let month = ("0" + (date_ob.getMonth() + 1)).slice(-2);
-      let year = date_ob.getFullYear();
-      let hours = date_ob.getHours();
-      let minutes = date_ob.getMinutes();
-      let seconds = date_ob.getSeconds();
+        let date_ob = new Date();
+        let date = ("0" + date_ob.getDate()).slice(-2);
+        let month = ("0" + (date_ob.getMonth() + 1)).slice(-2);
+        let year = date_ob.getFullYear();
+        let hours = date_ob.getHours();
+        let minutes = date_ob.getMinutes();
+        let seconds = date_ob.getSeconds();
 
-      return `${year}-${month}-${date} ${hours}:${minutes}:${seconds}`
+        return `${year}-${month}-${date} ${hours}:${minutes}:${seconds}`;
     }
 
     static trim(str, l) {
-      var strs = [];
-      while(str.length > l){
-          var pos = str.substring(0, l).lastIndexOf(' ');
-          pos = pos <= 0 ? l : pos;
-          strs.push(str.substring(0, pos));
-          var i = str.indexOf(' ', pos)+1;
-          if(i < pos || i > pos+l)
-              i = pos;
-          str = str.substring(i);
-      }
-      strs.push(str);
-      return strs;
+        var strs = [];
+        while(str.length > l){
+            var pos = str.substring(0, l).lastIndexOf(" ");
+            pos = pos <= 0 ? l : pos;
+            strs.push(str.substring(0, pos));
+            var i = str.indexOf(" ", pos)+1;
+            if(i < pos || i > pos+l)
+                i = pos;
+            str = str.substring(i);
+        }
+        strs.push(str);
+        return strs;
     }
 
 
@@ -132,7 +132,7 @@ module.exports = class Util {
           	!(code === 32)) { // including spacebar
         		return false;
     	}
+        }
+        return true;
     }
-    return true;
-  };
-}
+};

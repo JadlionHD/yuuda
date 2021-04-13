@@ -1,3 +1,3 @@
 module.exports = (client) => {
-	client.logger.log(`${client.user.username} ready!`, "ready")
-}
+    client.logger.log(`${client.user.username} ready!`, "ready");
+};

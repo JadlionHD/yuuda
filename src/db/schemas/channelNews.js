@@ -1,7 +1,7 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 let schema = new mongoose.Schema({
-	channel: String
-})
+    channel: String
+});
 
 module.exports = mongoose.model("channelNews", schema);

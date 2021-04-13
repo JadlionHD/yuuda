@@ -1,11 +1,11 @@
 const router = require("express").Router();
 
 router.get("/", (req, res) => {
-	res.send("Hello");
-})
+    res.send("Hello");
+});
 
 router.get("/callback", (req, res) => {
-	res.send("No callback")
-})
+    res.send("No callback");
+});
 
 module.exports = router;

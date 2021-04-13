@@ -2,13 +2,13 @@ const axios = require("axios");
 const baseURL = "https://graphql.anilist.co";
 
 module.exports = class anilist {
-	static searchAnime(name) {
-		return new Promise(function(resolve, reject) {
-			axios({
-				url: baseURL,
-				method: "post",
-				data: {
-					query: `
+    static searchAnime(name) {
+        return new Promise(function(resolve, reject) {
+            axios({
+                url: baseURL,
+                method: "post",
+                data: {
+                    query: `
 query {
   Media (search: "${name}", type: ANIME) {
     id
@@ -40,22 +40,22 @@ query {
   }
 }
 `
-				}
-			}).then(result => {
-				resolve(result.data)
-			}).catch(err => {
-				reject(err.data)
-			})
-		})
-	}
+                }
+            }).then(result => {
+                resolve(result.data);
+            }).catch(err => {
+                reject(err.data);
+            });
+        });
+    }
 
-	static searchCharacter(name) {
-		return new Promise(function(resolve, reject) {
-			axios({
-				url: baseURL,
-				method: "post",
-				data: {
-					query: `
+    static searchCharacter(name) {
+        return new Promise(function(resolve, reject) {
+            axios({
+                url: baseURL,
+                method: "post",
+                data: {
+                    query: `
 query {
   Character (search: "${name}") {
     name {
@@ -73,12 +73,12 @@ query {
   }
 }
 `
-				}
-			}).then(result => {
-				resolve(result.data)
-			}).catch(err => {
-				reject(err.data)
-			})	
-		})
-	}
-}
+                }
+            }).then(result => {
+                resolve(result.data);
+            }).catch(err => {
+                reject(err.data);
+            });	
+        });
+    }
+};

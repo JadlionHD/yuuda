@@ -2,23 +2,23 @@ const { CommandClient } = require("eris");
 const { readdirSync } = require("fs");
 
 class ClientBot extends CommandClient {
-	constructor(config, clientOptions, commandOptions) {
-		super(config.DISCORD_TOKEN, clientOptions, commandOptions);
+    constructor(config, clientOptions, commandOptions) {
+        super(config.DISCORD_TOKEN, clientOptions, commandOptions);
 
-		this.request = require("axios");
-		this.config = require("../config.js");
-		this.util = require("./Util.js");
+        this.request = require("axios");
+        this.config = require("../config.js");
+        this.util = require("./Util.js");
         this.logger = require("./Logger.js");
-		this._commandsLoad(this);
-		this._eventLoad(this);
-	}
+        this._commandsLoad(this);
+        this._eventLoad(this);
+    }
 
-	_commandsLoad(client) {
-        const commandFile = readdirSync(`./src/commands/`).forEach(dir => {
+    _commandsLoad(client) {
+        const commandFile = readdirSync("./src/commands/").forEach(dir => {
         	const commands = readdirSync(`./src/commands/${dir}`).filter(file => file.endsWith(".js"));
 
         	for(let file of commands) {
-        		let name = file.replace('.js', '').toLowerCase();
+        		let name = file.replace(".js", "").toLowerCase();
         		let cmd = require(`../commands/${dir}/${name}`);
 
         		client.registerCommand(cmd.config.name, async(msg, args) => {
@@ -26,9 +26,9 @@ class ClientBot extends CommandClient {
                         msg: msg,
                         client: client,
                         args: args
-                    } // package for commands with only 1 paramenters
+                    }; // package for commands with only 1 paramenters
 
-                    cmd.run(p)
+                    cmd.run(p);
                 }, {
         			caseInsensitive: true,
         			aliases: cmd.config.aliases,
@@ -42,19 +42,19 @@ class ClientBot extends CommandClient {
                     permissionMessage: (m => {
                         return `${m.author.mention}, you been missing some permissions poi!, including: \`${Object.entries(m.command.requirements.permissions).map(([str, value]) => `${str[0] + str.slice(1)}`).join(", ")}\``;
                     })
-        		})
+        		});
         	}
-        })
+        });
 
-	}
+    }
 
-	_eventLoad(client) {
-		const file = readdirSync("./src/events");
-		for(const event of file) {
-			const name = require(`../events/${event}`);
-			client.on(event.split(".")[0], (...args) => name(client, ...args));
-		} 
-	}
+    _eventLoad(client) {
+        const file = readdirSync("./src/events");
+        for(const event of file) {
+            const name = require(`../events/${event}`);
+            client.on(event.split(".")[0], (...args) => name(client, ...args));
+        } 
+    }
 }
 
 module.exports = ClientBot;

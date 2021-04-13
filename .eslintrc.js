@@ -10,7 +10,9 @@ module.exports = {
     },
     "rules": {
         "no-mixed-spaces-and-tabs": ["off", "smart-tabs"],
+        "indent": ["error", 4],
+        "quotes": ["error", "double"],
         "no-unused-vars": "warn",
-        "no-extra-semi": "warn"
+        "semi": ["error", "always"]
     }
 };
