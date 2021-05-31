@@ -45,6 +45,7 @@ module.exports.run = async (p) => {
         }
     }
     p.msg.channel.createMessage(msgEmbed);
+    return true;
 };
 
 module.exports.config = {

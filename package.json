@@ -6,8 +6,8 @@
 	"scripts": {
 		"start": "npm run lint && node src/app.js",
 		"start:yarn": "yarn run lint && node src/app.js",
-		"lint": "./node_modules/.bin/eslint src/**",
-		"lint:fix": "./node_modules/.bin/eslint src/** --fix"
+		"lint": "eslint src/**",
+		"lint:fix": "eslint src/** --fix"
 	},
 	"repository": {
 		"type": "git",
@@ -25,11 +25,9 @@
 		"chalk": "^4.1.0",
 		"dotenv": "^8.2.0",
 		"ejs": "^3.1.5",
-		"eris": "^0.14.0",
-		"eris-collector": "^1.0.1",
+		"eris": "^0.15.1",
 		"express": "^4.17.1",
-		"moment": "^2.29.1",
-		"mongoose": "^5.11.12"
+		"moment": "^2.29.1"
 	},
 	"devDependencies": {
 		"eslint": "^7.18.0"

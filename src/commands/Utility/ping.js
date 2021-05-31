@@ -1,5 +1,7 @@
 module.exports.run = async (p) => {
     p.msg.channel.createMessage(`Ping ${p.client.shards.get(0).latency}ms`);
+    
+    return true;
 };
 
 module.exports.config = {

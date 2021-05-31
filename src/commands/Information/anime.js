@@ -8,7 +8,6 @@ module.exports.run = async (p) => {
         if(body.data.Media.isAdult === false || p.msg.channel.nsfw === true) {
             let starred = Math.floor((body.data.Media.averageScore || 20) / 20);
             let desc = body.data.Media.description || "None";
-            console.log(body);
             let msgEmbed = {
                 embed: {
                     title: `${body.data.Media.title.romaji}`,
@@ -65,6 +64,7 @@ module.exports.run = async (p) => {
         p.msg.channel.createMessage("There's some error poi, try again poi");
         console.log(error);
     });
+    return true;
 };
 // ★☆
 module.exports.config = {

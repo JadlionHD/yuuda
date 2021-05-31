@@ -7,15 +7,6 @@ const client = new ClientBot(config, config.ClientOptions, config.CommandOptions
 client.connect();
 
 // connecting to database
-const mongoose = require("mongoose");
-
-mongoose.connect(process.env.MONGO_URL, {
-    useNewUrlParser: true, 
-    useUnifiedTopology: true
-}).then(() => {
-    client.logger.log("MongoDB Ready", "ready");
-});
-
 
 // monitor the ram
 setTimeout(() => {

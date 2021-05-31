@@ -6,6 +6,8 @@ module.exports.run = async (p) => {
     if(user.id === "494219204610883594") return p.msg.channel.createMessage(`🏳️‍🌈 | ${user.username} is **0%** Gay!`);
 
     p.msg.channel.createMessage(`🏳️‍🌈 | ${user.username} is **${howgay}%** Gay!`);
+    
+    return true;
 };
 
 module.exports.config = {
