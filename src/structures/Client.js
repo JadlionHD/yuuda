@@ -53,7 +53,10 @@ class ClientBot extends CommandClient {
         for(const event of file) {
             const name = require(`../events/${event}`);
             client.on(event.split(".")[0], (...args) => name(client, ...args));
-        } 
+        }
+
+        // web service
+        require("./ModuleHandlers.js").WebService(); 
     }
 }
 
