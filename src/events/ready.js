@@ -1,4 +1,4 @@
 module.exports = (client) => {
     client.logger.log(`${client.user.username} ready!`, "ready");
-    client.editStatus("online", {name: "Azur lane",type: 0});
+    client.editStatus("online", {name: "Azur Lane",type: 0});
 };
