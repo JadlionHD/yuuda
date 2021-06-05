@@ -1,5 +1,6 @@
 module.exports = {
     DISCORD_TOKEN: process.env.DISCORD_TOKEN,
+    debug: false,
     ClientOptions: {
         maxShards: "auto",
         messageLimit: 0,
