@@ -21,7 +21,7 @@ module.exports = {
         description: "A JadMaid Bot",
         owner: "JadlionHD"
     },
-    ownerID: ["421307985827201024", "540560193277132800", "494219204610883594", "456823870087888896"],
+    ownerID: ["421307985827201024", "540560193277132800", "494219204610883594"],
     colors: {
         error: 0xFF0000,
         green: 0x00FF46,
