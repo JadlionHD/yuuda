@@ -1,18 +1,18 @@
 const anilist = require("../../structures/Anilist.js");
 
-module.exports.run = async (p) => {
-    let argument = p.args.join(" ");
-    if(!argument) return p.msg.channel.createMessage(`${p.msg.author.mention}, you're missing some argument poi.`);
+module.exports.run = async (client, msg, args) => {
+    let argument = args.join(" ");
+    if(!argument) return msg.channel.createMessage(`${msg.author.mention}, you're missing some argument poi.`);
 
     anilist.searchAnime(argument).then(body => {
-        if(body.data.Media.isAdult === false || p.msg.channel.nsfw === true) {
+        if(body.data.Media.isAdult === false || msg.channel.nsfw === true) {
             let starred = Math.floor((body.data.Media.averageScore || 20) / 20);
             let desc = body.data.Media.description || "None";
             let msgEmbed = {
                 embed: {
                     title: `${body.data.Media.title.romaji}`,
-                    color: p.client.config.colors.success,
-                    description: p.client.util.trim(desc.replace(/<br>/g, ""), 1024)[0],
+                    color: client.config.colors.success,
+                    description: client.util.trim(desc.replace(/<br>/g, ""), 1024)[0],
                     fields: [
                         {
                             name: "Episodes",
@@ -56,15 +56,14 @@ module.exports.run = async (p) => {
                     }
                 }
             };
-            p.msg.channel.createMessage(msgEmbed);
+            msg.channel.createMessage(msgEmbed);
         } else {
-            p.msg.channel.createMessage("Sorry, this anime related to nsfw poi, please use this on nsfw channel poi!");
+            msg.channel.createMessage("Sorry, this anime related to nsfw poi, please use this on nsfw channel poi!");
         }
     }).catch(error => {
-        p.msg.channel.createMessage("There's some error poi, try again poi");
+        msg.channel.createMessage("There's some error poi, try again poi");
         console.log(error);
     });
-    return true;
 };
 // ★☆
 module.exports.config = {

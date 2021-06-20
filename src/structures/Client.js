@@ -22,13 +22,7 @@ class ClientBot extends CommandClient {
         		let cmd = require(`../commands/${dir}/${name}`);
 
         		client.registerCommand(cmd.config.name, async(msg, args) => {
-                    let p = {
-                        msg: msg,
-                        client: client,
-                        args: args
-                    }; // package for commands with only 1 paramenters
-
-                    cmd.run(p);
+                    cmd.run(client, msg, args);
                 }, {
         			caseInsensitive: true,
         			aliases: cmd.config.aliases,

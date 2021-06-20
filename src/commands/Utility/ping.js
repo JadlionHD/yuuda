@@ -1,8 +1,12 @@
-module.exports.run = async (p) => {
-    p.msg.channel.createMessage(`Ping ${p.client.shards.get(0).latency}ms`);
-    
-    return true;
+module.exports.run = async (client, msg, args) => {
+    msg.channel.createMessage({
+        content: `Ping ${client.shards.get(0).latency}ms`,
+        messageReference: {
+            messageID: msg.id
+        }
+    });
 };
+
 
 module.exports.config = {
     name: "ping",

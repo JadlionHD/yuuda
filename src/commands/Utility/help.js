@@ -1,10 +1,10 @@
 const { readdirSync } = require("fs");
 
-module.exports.run = async (p) => {
+module.exports.run = async (client, msg, args) => {
     let msgEmbed = {
         embed: {
             title: "List commands",
-            color: p.client.config.colors.success,
+            color: client.config.colors.success,
             fields: [
                 {
                     name: "Utility",
@@ -18,13 +18,13 @@ module.exports.run = async (p) => {
         }
     };
 	
-    if(p.args.length > 0) {
-        let cur = p.client.commands[p.client.commandAliases[p.args[0]] || p.args[0]];
+    if(args.length > 0) {
+        let cur = client.commands[client.commandAliases[args[0]] || args[0]];
         if(cur) {
             let msgHelp = {
                 embed: {
-                    title: `Command: ${p.args[0]}`,
-                    color: p.client.config.colors.success,
+                    title: `Command: ${args[0]}`,
+                    color: client.config.colors.success,
                     description: `
 **Description:** \`${cur.description}\`
 **Aliases:** \`${cur.aliases.map(str => `${str[0] + str.slice(1)}`).join(", ") ? cur.aliases.map(str => `${str[0] + str.slice(1)}`).join(", ") : "None"}\`
@@ -38,14 +38,13 @@ module.exports.run = async (p) => {
                 }
 
             };
-            return p.msg.channel.createMessage(msgHelp);
+            return msg.channel.createMessage(msgHelp);
         }
         else {
             return "Command not found";
         }
     }
-    p.msg.channel.createMessage(msgEmbed);
-    return true;
+    msg.channel.createMessage(msgEmbed);
 };
 
 module.exports.config = {
