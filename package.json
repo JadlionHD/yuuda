@@ -5,7 +5,6 @@
 	"main": "src/app.js",
 	"scripts": {
 		"start": "npm run lint && node src/app.js",
-		"start:yarn": "yarn run lint && node src/app.js",
 		"lint": "eslint src/**",
 		"lint:fix": "eslint src/** --fix"
 	},

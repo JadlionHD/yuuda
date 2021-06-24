@@ -1,135 +1,135 @@
 module.exports = class Util {
-    static clean (text) {
-        if (typeof(text) === "string") 
-            return text.replace(/`/g, "`" + String.fromCharCode(8203)).replace(/@/g, "@" + String.fromCharCode(8203));
-        else
-            return text;
-    }
+  static clean (text) {
+    if (typeof(text) === "string") 
+      return text.replace(/`/g, "`" + String.fromCharCode(8203)).replace(/@/g, "@" + String.fromCharCode(8203));
+    else
+      return text;
+  }
   
-    static randomNumber(min, max) {
-        if (!(max instanceof Number) || !(min instanceof Number)) {
-            return null;
-        }
-
-        let random = Math.floor(Math.random() * (max - min + 1) + min);
-        if (random === max) {
-            random--;
-        }
-
-        return random;
+  static randomNumber(min, max) {
+    if (!(max instanceof Number) || !(min instanceof Number)) {
+      return null;
     }
 
+    let random = Math.floor(Math.random() * (max - min + 1) + min);
+    if (random === max) {
+      random--;
+    }
 
-    static randomString(length, useCapital, useNumber) {
-        if (
-            !(length instanceof Number) ||
+    return random;
+  }
+
+
+  static randomString(length, useCapital, useNumber) {
+    if (
+      !(length instanceof Number) ||
             !(useCapital instanceof Boolean) ||
             !(useNumber instanceof Boolean)
-        ) {
-            return null;
-        }
-
-        const normalChars = "abcdefghijklmnopqrstuvwxyz".split("");
-        const capsChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
-        let strings = "";
-        while (strings.length < length) {
-            const random = this.randomNumber(26, 0);
-
-            if (useCapital && this.randomBoolean()) {
-                strings += capsChars[random];
-                continue;
-            }
-            if (useNumber && this.randomBoolean()) {
-                strings += this.randomNumber(10, 0);
-                continue;
-            }
-
-            strings += normalChars[random];
-        }
-
-        return strings;
+    ) {
+      return null;
     }
+
+    const normalChars = "abcdefghijklmnopqrstuvwxyz".split("");
+    const capsChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
+    let strings = "";
+    while (strings.length < length) {
+      const random = this.randomNumber(26, 0);
+
+      if (useCapital && this.randomBoolean()) {
+        strings += capsChars[random];
+        continue;
+      }
+      if (useNumber && this.randomBoolean()) {
+        strings += this.randomNumber(10, 0);
+        continue;
+      }
+
+      strings += normalChars[random];
+    }
+
+    return strings;
+  }
   
-    static timeParser(ms){
+  static timeParser(ms){
       
-        let seconds = ms / 1000;
-        let days = parseInt(seconds / 86400);
-        seconds = seconds % 86400;
-        let hours = parseInt(seconds / 3600);
-        seconds = seconds % 3600;
-        let minutes = parseInt(seconds / 60);
-        seconds = parseInt(seconds % 60);
+    let seconds = ms / 1000;
+    let days = parseInt(seconds / 86400);
+    seconds = seconds % 86400;
+    let hours = parseInt(seconds / 3600);
+    seconds = seconds % 3600;
+    let minutes = parseInt(seconds / 60);
+    seconds = parseInt(seconds % 60);
       
-        if (days) {
-            return `${days}d ${hours}h ${minutes}m ${seconds}s`;
-        }
-        else if (hours) {
-            return `${hours}h ${minutes}m ${seconds}s`;
-        }
-        else if (minutes) {
-            return `${minutes}m ${seconds}s`;
-        }
-        return `${seconds}s`;
-      
+    if (days) {
+      return `${days}d ${hours}h ${minutes}m ${seconds}s`;
     }
+    else if (hours) {
+      return `${hours}h ${minutes}m ${seconds}s`;
+    }
+    else if (minutes) {
+      return `${minutes}m ${seconds}s`;
+    }
+    return `${seconds}s`;
+      
+  }
   
-    static codeBlock(string, code) {
-        if(code) return `\`\`\`${code}\n${string}\`\`\``;
-        return `\`\`\`${string}\`\`\``;
+  static codeBlock(string, code) {
+    if(code) return `\`\`\`${code}\n${string}\`\`\``;
+    return `\`\`\`${string}\`\`\``;
+  }
+
+  static timeStamp(ms) {
+    var time = new Date(ms).toLocaleDateString("en-US");
+    return time;
+  }
+
+  static secondParser(seconds) {
+    seconds = Number(seconds);
+    var d = Math.floor(seconds / (3600*24));
+    var h = Math.floor(seconds % (3600*24) / 3600);
+    var m = Math.floor(seconds % 3600 / 60);
+    var s = Math.floor(seconds % 60);
+
+    var dDisplay = d > 0 ? d + (d == 1 ? "d " : "d ") : "";
+    var hDisplay = h > 0 ? h + (h == 1 ? "h " : "h ") : "";
+    var mDisplay = m > 0 ? m + (m == 1 ? "m " : "m ") : "";
+    var sDisplay = s > 0 ? s + (s == 1 ? "s" : "s") : "";
+    return dDisplay + hDisplay + mDisplay + sDisplay;     
+  }
+
+  static numberComa(ms) {
+    return ms.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  }
+
+  static getCurrentTime() {
+    let date_ob = new Date();
+    let date = ("0" + date_ob.getDate()).slice(-2);
+    let month = ("0" + (date_ob.getMonth() + 1)).slice(-2);
+    let year = date_ob.getFullYear();
+    let hours = date_ob.getHours();
+    let minutes = date_ob.getMinutes();
+    let seconds = date_ob.getSeconds();
+
+    return `${year}-${month}-${date} ${hours}:${minutes}:${seconds}`;
+  }
+
+  static trim(str, l) {
+    var strs = [];
+    while(str.length > l){
+      var pos = str.substring(0, l).lastIndexOf(" ");
+      pos = pos <= 0 ? l : pos;
+      strs.push(str.substring(0, pos));
+      var i = str.indexOf(" ", pos)+1;
+      if(i < pos || i > pos+l)
+        i = pos;
+      str = str.substring(i);
     }
-
-    static timeStamp(ms) {
-        var time = new Date(ms).toLocaleDateString("en-US");
-        return time;
-    }
-
-    static secondParser(seconds) {
-        seconds = Number(seconds);
-        var d = Math.floor(seconds / (3600*24));
-        var h = Math.floor(seconds % (3600*24) / 3600);
-        var m = Math.floor(seconds % 3600 / 60);
-        var s = Math.floor(seconds % 60);
-
-        var dDisplay = d > 0 ? d + (d == 1 ? "d " : "d ") : "";
-        var hDisplay = h > 0 ? h + (h == 1 ? "h " : "h ") : "";
-        var mDisplay = m > 0 ? m + (m == 1 ? "m " : "m ") : "";
-        var sDisplay = s > 0 ? s + (s == 1 ? "s" : "s") : "";
-        return dDisplay + hDisplay + mDisplay + sDisplay;     
-    }
-
-    static numberComa(ms) {
-        return ms.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-    }
-
-    static getCurrentTime() {
-        let date_ob = new Date();
-        let date = ("0" + date_ob.getDate()).slice(-2);
-        let month = ("0" + (date_ob.getMonth() + 1)).slice(-2);
-        let year = date_ob.getFullYear();
-        let hours = date_ob.getHours();
-        let minutes = date_ob.getMinutes();
-        let seconds = date_ob.getSeconds();
-
-        return `${year}-${month}-${date} ${hours}:${minutes}:${seconds}`;
-    }
-
-    static trim(str, l) {
-        var strs = [];
-        while(str.length > l){
-            var pos = str.substring(0, l).lastIndexOf(" ");
-            pos = pos <= 0 ? l : pos;
-            strs.push(str.substring(0, pos));
-            var i = str.indexOf(" ", pos)+1;
-            if(i < pos || i > pos+l)
-                i = pos;
-            str = str.substring(i);
-        }
-        strs.push(str);
-        return strs;
-    }
+    strs.push(str);
+    return strs;
+  }
 
 
-    static isAlphaNumeric(str) {
+  static isAlphaNumeric(str) {
     	var code, i, len;
 
     	for (i = 0, len = str.length; i < len; i++) {
@@ -140,7 +140,7 @@ module.exports = class Util {
           	!(code === 32)) { // including spacebar
         		return false;
     	   }
-        }
-        return true;
     }
+    return true;
+  }
 };
