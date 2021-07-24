@@ -6,7 +6,7 @@ module.exports.run = async (client, msg, args) => {
 
   anilist.searchAnime(argument).then(body => {
     if(body.data.Media.isAdult === false || msg.channel.nsfw === true) {
-      let starred = Math.floor((body.data.Media.averageScore || 20) / 20);
+      let starred = `${"★".repeat(Math.floor((body.data.Media.averageScore || 20)/20))} ${body.data.Media.averageScore}%`;
       let desc = body.data.Media.description || "None";
       let msgEmbed = {
         embed: {
@@ -26,7 +26,7 @@ module.exports.run = async (client, msg, args) => {
             },
             {
               name: "Rating",
-              value: "★".repeat(starred),
+              value: starred,
               inline: true
             },
             {
@@ -70,7 +70,7 @@ module.exports.config = {
   name: "anime",
   aliases: [],
   description: "search a anime",
-  usage: "y!anime [name anime]",
+  usage: "[name anime]",
   cooldown: 5,
   requirements: {
     permissions: {}

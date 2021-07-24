@@ -18,7 +18,7 @@ module.exports.config = {
   name: "stats",
   aliases: [],
   description: "Stats info of the bot",
-  usage: "y!stats",
+  usage: undefined,
   cooldown: 5,
   requirements: {
     permissions: {}

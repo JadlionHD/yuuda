@@ -63,7 +63,7 @@ module.exports.config = {
   name: "eval",
   aliases: ["ev"],
   description: "a dev evaluate",
-  usage: "y!eval (argument)",
+  usage: "(argument)",
   cooldown: 5,
   requirements: {
     permissions: {}

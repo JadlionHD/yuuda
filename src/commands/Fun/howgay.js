@@ -13,7 +13,7 @@ module.exports.config = {
   name: "howgay",
   aliases: [],
   description: "how he/she gay",
-  usage: "y!howgay <mention>",
+  usage: "<mention>",
   cooldown: 5,
   requirements: {
     permissions: {}

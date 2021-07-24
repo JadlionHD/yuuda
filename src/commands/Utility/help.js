@@ -51,7 +51,7 @@ module.exports.config = {
   name: "help",
   aliases: [],
   description: "Showing a list all of the commands",
-  usage: "y!help <commands>",
+  usage: "<commands>",
   cooldown: 5,
   requirements: {
     permissions: {}

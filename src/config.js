@@ -16,7 +16,7 @@ module.exports = {
     }
   },
   CommandOptions: {
-    prefix: ["y!", "yuda ", "poi ", "@mention"],
+    prefix: ["n!", "nimi ", "@mention"],
     defaultHelpCommand: false,
     description: "A JadMaid Bot",
     owner: "JadlionHD"
@@ -27,5 +27,6 @@ module.exports = {
     green: 0x00FF46,
     success: 0xC0C0C0,
     warning: 0xFFD100
-  }
+  },
+  Constants: require("./structures/Constants.js")
 };
