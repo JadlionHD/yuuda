@@ -1,6 +1,5 @@
 module.exports.run = async (client, msg, args) => {
   client.osu.getUser(args[0], args[1]).then((res) => {
-    console.log(res);
     msg.channel.createMessage({
       embed: {
         color: client.config.colors.success,
