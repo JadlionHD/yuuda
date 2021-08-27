@@ -1,5 +1,3 @@
-<img src="https://github.com/JadlionHD/yuudachi-poi/blob/main/.github/images/Poi.png?raw=true" width="128x">
-
 # yuudachi-poi 
 ![GitHub repo size](https://img.shields.io/github/repo-size/jadlionhd/yuudachi-poi) ![GitHub contributors](https://img.shields.io/github/contributors/jadlionhd/yuudachi-poi)   
 still new (doesnt have any description yet)
