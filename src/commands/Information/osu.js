@@ -1,5 +1,5 @@
 module.exports.run = async (client, msg, args) => {
-  client.osu.getUser(args[1], args[0]).then((res) => {
+  client.osu.getUser(args[0], args[1]).then((res) => {
     console.log(res);
     msg.channel.createMessage({
       embed: {
@@ -22,7 +22,7 @@ module.exports.config = {
   name: "osu",
   aliases: [],
   description: "testing some new feature",
-  usage: "<mode?> [username]",
+  usage: "[username] <mode?>",
   cooldown: 5,
   requirements: {
     permissions: {}

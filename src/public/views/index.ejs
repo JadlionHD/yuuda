@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+
+	</head>
+
+	<body>
+		<div className="box">
+			<img src="<%=client.user.dynamicAvatarURL("png", 128)%>" className="box-img">
+			<p><%=client.user.username%></p>
+			<p>Jumlah Server: <%=client.guilds.size%><br>Jumlah Users: <%=client.users.size%></p>
+		</div>
+	</body>
+
+</html>

@@ -41,16 +41,13 @@ class ClientBot extends CommandClient {
     });
   }
 
-  _eventLoad(client) {
+  async _eventLoad(client) {
     const file = readdirSync("./src/events");
     for(const event of file) {
       const name = require(`../events/${event}`);
       client.on(event.split(".")[0], (...args) => name(client, ...args));
     }
-
-    // web service
-    require("./ModuleHandlers.js").WebService();
-
+    
     // monitor ram
     if(this.config.debug === true) {
       this.logger.log("Debug mode is activated!", "warn");
