@@ -9,7 +9,7 @@ const WebService = (ClientBot) => {
 
 
   app.get("/", (req, res) => {
-    res.render("index", {client: ClientBot});
+    res.render("index", {client: ClientBot, config: {fullUrl: `https://${req.get("host")}`}});
   });
 
 

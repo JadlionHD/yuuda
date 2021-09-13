@@ -2,9 +2,13 @@
 <html>
 
 	<head>
-
+		<title><%=client.user.username%></title>
+		<meta property="og:title" content="<%=client.user.username%> website">
+		<meta property="og:description" content="No Description">
+		<meta property="og:url" content="<%=config.fullUrl%>">
+		<meta property="og:image" content="<%=client.user.dynamicAvatarURL("png", 128)%>">
+		<meta name="theme-color" content="#FFEA17">
 	</head>
-
 	<body>
 		<div className="box">
 			<img src="<%=client.user.dynamicAvatarURL("png", 128)%>" className="box-img">
