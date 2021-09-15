@@ -34,7 +34,7 @@ class OsuAPI {
       });
     });
   }
-  
+
   /**
 	* Get User Data
 	* @param {name} <string> - User id or name

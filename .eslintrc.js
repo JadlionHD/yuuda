@@ -8,6 +8,7 @@ module.exports = {
 	"parserOptions": {
 		"ecmaVersion": 12
 	},
+	"parser": "babel-eslint",
 	"rules": {
 		"no-mixed-spaces-and-tabs": ["off", "smart-tabs"],
 		"indent": ["error", 2],

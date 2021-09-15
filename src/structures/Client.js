@@ -21,7 +21,7 @@ class ClientBot extends CommandClient {
     setTimeout(() => {
       require("./Express.js").WebService(this);
       //console.log(this.cmds)
-    }, 5 * 1000)
+    }, 5 * 1000);
   }
 
   #commandsLoad = (client) => {
@@ -32,7 +32,7 @@ class ClientBot extends CommandClient {
     		let cmd = require(`../commands/${dir}/${name}`);
 
         // Put all the commands in this Collection
-        this.cmds.set(name, cmd.config)
+        this.cmds.set(name, cmd.config);
 
     		client.registerCommand(cmd.config.name, async(msg, args) => {
           cmd.run(client, msg, args);
