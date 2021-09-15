@@ -12,8 +12,9 @@ module.exports.config = {
   name: "ping",
   aliases: ["pong"],
   description: "a ping pong test",
-  usage: undefined,
+  usage: "{prefix}ping",
   cooldown: 5,
+  category: "Utility",
   requirements: {
     permissions: {}
   }

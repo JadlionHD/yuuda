@@ -8,16 +8,20 @@ module.exports.run = async (client, msg, args) => {
       fields: [
         {
           name: "Utility",
-          value: readdirSync("./src/commands/Utility").map(str => `\`${str[0] + str.slice(1)}\` `).join(" ").replace(/.js/g, "")
+          value: "help, ping, stats"
         },
         {
           name: "Fun",
-          value: readdirSync("./src/commands/Fun").map(str => `\`${str[0] + str.slice(1)}\` `).join(" ").replace(/.js/g, "")
+          value: "howgay"
+        },
+        {
+          name: "Information",
+          value: "anime, osu"
         }
       ]
     }
   };
-	
+  // readdirSync("./src/commands/Fun").map(str => `\`${str[0] + str.slice(1)}\` `).join(" ").replace(/.js/g, "")
   if(args.length > 0) {
     let cur = client.commands[client.commandAliases[args[0]] || args[0]];
     if(cur) {
@@ -51,8 +55,9 @@ module.exports.config = {
   name: "help",
   aliases: [],
   description: "Showing a list all of the commands",
-  usage: "<commands>",
+  usage: "{prefix}help <commands>",
   cooldown: 5,
+  category: "Utility",
   requirements: {
     permissions: {}
   }

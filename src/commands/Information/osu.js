@@ -21,8 +21,9 @@ module.exports.config = {
   name: "osu",
   aliases: [],
   description: "testing some new feature",
-  usage: "[username] <mode?>",
+  usage: "{prefix}osu [username] <mode?>",
   cooldown: 5,
+  category: "Information",
   requirements: {
     permissions: {}
   }

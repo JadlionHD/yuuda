@@ -1,7 +1,8 @@
-const { CommandClient } = require("eris");
+const { CommandClient, Collection } = require("eris");
 const { readdirSync } = require("fs");
+const OsuAPI = require("./OsuApiWrapper.js");
 
-class ClientBot extends CommandClient { 
+class ClientBot extends CommandClient {
   constructor(config, clientOptions, commandOptions) {
     super(config.DISCORD_TOKEN, clientOptions, commandOptions);
 
@@ -9,17 +10,29 @@ class ClientBot extends CommandClient {
     this.config = require("../config.js");
     this.util = require("./Util.js");
     this.logger = require("./Logger.js");
-    this.osu = require("./OsuApiWrapper.js");
-    this._commandsLoad(this);
-    this._eventLoad(this);
+    this.osu = new OsuAPI(process.env.OSU_TOKEN);
+    this.cmds = new Collection();
+    this.#commandsLoad(this);
+    this.#eventsLoad(this);
   }
 
-  _commandsLoad(client) {
+  Ready() {
+    this.connect();
+    setTimeout(() => {
+      require("./Express.js").WebService(this);
+      //console.log(this.cmds)
+    }, 5 * 1000)
+  }
+
+  #commandsLoad = (client) => {
     const commandFile = readdirSync("./src/commands/").forEach(dir => {
     	const commands = readdirSync(`./src/commands/${dir}`).filter(file => file.endsWith(".js"));
     	for(let file of commands) {
     		let name = file.replace(".js", "").toLowerCase();
     		let cmd = require(`../commands/${dir}/${name}`);
+
+        // Put all the commands in this Collection
+        this.cmds.set(name, cmd.config)
 
     		client.registerCommand(cmd.config.name, async(msg, args) => {
           cmd.run(client, msg, args);
@@ -28,7 +41,7 @@ class ClientBot extends CommandClient {
     			aliases: cmd.config.aliases,
     			description: cmd.config.description,
     			cooldown: cmd.config.cooldown * 1000,
-    			usage: cmd.config.usage ? `${this.config.CommandOptions.prefix[0]}${cmd.config.name} ${cmd.config.usage}` : `${this.config.CommandOptions.prefix[0]}${cmd.config.name}`,
+    			usage: cmd.config.usage.replace(/{prefix}/gi, this.config.CommandOptions.prefix[0]),
     			requirements: {
     				permissions: cmd.config.requirements.permissions || {} // empty if there's nothing
     			},
@@ -41,7 +54,7 @@ class ClientBot extends CommandClient {
     });
   }
 
-  async _eventLoad(client) {
+  #eventsLoad = async (client) => {
     const file = readdirSync("./src/events");
     for(const event of file) {
       const name = require(`../events/${event}`);

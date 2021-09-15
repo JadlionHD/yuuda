@@ -70,8 +70,9 @@ module.exports.config = {
   name: "anime",
   aliases: [],
   description: "search a anime",
-  usage: "[name anime]",
+  usage: "{prefix}anime [name anime]",
   cooldown: 5,
+  category: "Information",
   requirements: {
     permissions: {}
   }

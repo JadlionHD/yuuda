@@ -6,8 +6,4 @@ const config = require("./config.js");
 
 const client = new ClientBot(config, config.ClientOptions,config.CommandOptions);
 
-setTimeout(() => {
-  require("./structures/Express.js").WebService(client);
-}, 10 * 1000);
-
-client.connect();
+client.Ready();
