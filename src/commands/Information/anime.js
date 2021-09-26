@@ -1,6 +1,6 @@
 const anilist = require("../../structures/Anilist.js");
 
-module.exports.run = async (client, msg, args) => {
+module.exports.run = async (bot, msg, args) => {
   let argument = args.join(" ");
   if(!argument) return msg.channel.createMessage(`${msg.author.mention}, you're missing some argument poi.`);
 
@@ -11,8 +11,8 @@ module.exports.run = async (client, msg, args) => {
       let msgEmbed = {
         embed: {
           title: `${body.data.Media.title.romaji}`,
-          color: client.config.colors.success,
-          description: client.util.trim(desc.replace(/<br>/g, ""), 1024)[0],
+          color: bot.config.colors.success,
+          description: bot.util.trim(desc.replace(/<\/?[a-z]*>/g, ""), 1024)[0],
           fields: [
             {
               name: "Episodes",
@@ -73,6 +73,7 @@ module.exports.config = {
   usage: "{prefix}anime [name anime]",
   cooldown: 5,
   category: "Information",
+  ratelimit: 5,
   requirements: {
     permissions: {}
   }

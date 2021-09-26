@@ -1,10 +1,10 @@
 const { readdirSync } = require("fs");
 
-module.exports.run = async (client, msg, args) => {
+module.exports.run = async (bot, msg, args) => {
   let msgEmbed = {
     embed: {
       title: "List commands",
-      color: client.config.colors.success,
+      color: bot.config.colors.success,
       fields: [
         {
           name: "Utility",
@@ -23,29 +23,29 @@ module.exports.run = async (client, msg, args) => {
   };
   // readdirSync("./src/commands/Fun").map(str => `\`${str[0] + str.slice(1)}\` `).join(" ").replace(/.js/g, "")
   if(args.length > 0) {
-    let cur = client.commands[client.commandAliases[args[0]] || args[0]];
+    let cur = bot.commands.get(bot.aliases.has(args[0]) ? bot.aliases.get(args[0]) : args[0]).config;//[bot.aliases[args[0]] || args[0]];
     if(cur) {
       let msgHelp = {
         embed: {
           title: `Command: ${args[0]}`,
-          color: client.config.colors.success,
+          color: bot.config.colors.success,
           description: `
 **Description:** \`${cur.description}\`
 **Aliases:** \`${cur.aliases.map(str => `${str[0] + str.slice(1)}`).join(", ") ? cur.aliases.map(str => `${str[0] + str.slice(1)}`).join(", ") : "None"}\`
-**Cooldown:** \`${cur.cooldown / 1000} seconds\`
+**Cooldown:** \`${cur.cooldown} seconds\`
 **Permissions:** \`${Object.entries(cur.requirements.permissions).map(([str, value]) => `${str[0] + str.slice(1)}`).join(", ") ? Object.entries(cur.requirements.permissions).map(([str, value]) => `${str[0] + str.slice(1)}`).join(", ") : "None"}\`
-**Usage:** \`${cur.usage}\`
+**Usage:** \`${cur.usage.replace(/{prefix}/, bot.config.CommandOptions.prefix[0])}\`
 `,
-	                footer: {
-	                    text: "Syntax: [required], <optional>, (comments)"
-	                }
+          footer: {
+            text: "Syntax: [required], <optional>, (comments)"
+          }
         }
 
       };
       return msg.channel.createMessage(msgHelp);
     }
     else {
-      return "Command not found";
+      return;
     }
   }
   msg.channel.createMessage(msgEmbed);
@@ -58,6 +58,7 @@ module.exports.config = {
   usage: "{prefix}help <commands>",
   cooldown: 5,
   category: "Utility",
+  ratelimit: 5,
   requirements: {
     permissions: {}
   }

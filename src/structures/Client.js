@@ -1,29 +1,51 @@
-const { CommandClient, Collection } = require("eris");
+const { Client, Collection } = require("eris");
 const { readdirSync } = require("fs");
 const OsuAPI = require("./OsuApiWrapper.js");
 
-class ClientBot extends CommandClient {
-  constructor(config, clientOptions, commandOptions) {
-    super(config.DISCORD_TOKEN, clientOptions, commandOptions);
+class MainBot {
+  #token
+  constructor(token) {
+    if(!token) throw new Error("Token Required");
 
-    this.request = require("axios");
+    this.#token = token;
     this.config = require("../config.js");
+    this.client = new Client(this.#token, this.config.ClientOptions);
+    this.request = require("axios");
     this.util = require("./Util.js");
     this.logger = require("./Logger.js");
     this.osu = new OsuAPI(process.env.OSU_TOKEN);
-    this.cmds = new Collection();
-    this.#commandsLoad(this);
-    this.#eventsLoad(this);
+    this.commands = new Map();
+    this.aliases = new Map();
+    this.cooldown = new Map();
+    this.#commandsLoad();
+    this.#eventsLoad();
   }
 
   Ready() {
-    this.connect();
+    this.client.connect();
     setTimeout(() => {
       require("./Express.js").WebService(this);
       //console.log(this.cmds)
     }, 5 * 1000);
   }
 
+  #commandsLoad = () => {
+    readdirSync("./src/commands/").forEach(dir => {
+      const cmds = readdirSync(`./src/commands/${dir}`).filter(file => file.endsWith(".js"));
+      for(let file of cmds) {
+        let nameFile = file.replace(".js", "");
+        let cmd = require(`../commands/${dir}/${nameFile}`);
+
+        this.commands.set(nameFile, cmd);
+        if(cmd.config.aliases) {
+          for(let alias of cmd.config.aliases) {
+            this.aliases.set(alias, nameFile);
+          }
+        }
+      }
+    });
+  }
+  /*
   #commandsLoad = (client) => {
     const commandFile = readdirSync("./src/commands/").forEach(dir => {
     	const commands = readdirSync(`./src/commands/${dir}`).filter(file => file.endsWith(".js"));
@@ -53,19 +75,20 @@ class ClientBot extends CommandClient {
       }
     });
   }
+  */
 
-  #eventsLoad = async (client) => {
+  #eventsLoad = async () => {
     const file = readdirSync("./src/events");
     for(const event of file) {
       const name = require(`../events/${event}`);
-      client.on(event.split(".")[0], (...args) => name(client, ...args));
+      this.client.on(event.split(".")[0], (...args) => name(this, ...args));
     }
     
     // monitor ram
     if(this.config.debug === true) {
       this.logger.log("Debug mode is activated!", "warn");
       setTimeout(() => {
-        //require("./structures/Express.js")(client);
+        //require("./structures/Express.js")(this.client);
         //console.log(client.commands["ping"])
         setInterval(() => {
           this.logger.log(`RAM USED: ${process.memoryUsage().rss / 1024 / 1024}`, "log");
@@ -75,4 +98,4 @@ class ClientBot extends CommandClient {
   }
 }
 
-module.exports = ClientBot;
+module.exports = MainBot;
