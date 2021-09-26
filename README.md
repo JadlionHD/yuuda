@@ -12,7 +12,7 @@ English Language: Soon
 ```
 DISCORD_TOKEN=YOURTOKEN
 OSU_TOKEN=YOUROSUTOKEN
-PORT=NUMBERPORT
+PORT=NUMBERPORT // Optional
 ```
 
 - Setelah itu untuk memulai botnya kalian perlu melakukan:
