@@ -16,7 +16,7 @@ module.exports = {
     }
   },
   CommandOptions: {
-    prefix: ["n!", "nimi ", "@mention"],
+    prefix: ["nimi ", "n!"],
     defaultHelpCommand: false,
     description: "A JadMaid Bot",
     owner: "JadlionHD"

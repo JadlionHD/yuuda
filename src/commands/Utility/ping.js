@@ -1,6 +1,6 @@
-module.exports.run = async (client, msg, args) => {
+module.exports.run = async (bot, msg, args) => {
   msg.channel.createMessage({
-    content: `Ping ${client.shards.get(0).latency}ms`,
+    content: `Ping ${bot.client.shards.get(0).latency}ms`,
     messageReference: {
       messageID: msg.id
     }
@@ -15,6 +15,7 @@ module.exports.config = {
   usage: "{prefix}ping",
   cooldown: 5,
   category: "Utility",
+  ratelimit: 5,
   requirements: {
     permissions: {}
   }

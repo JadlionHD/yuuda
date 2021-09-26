@@ -1,3 +1,3 @@
-module.exports = async (client, err, id) => {
-  client.logger.log("Handled shards error", "error");
+module.exports = async (bot, err, id) => {
+  bot.logger.log("Handled shards error", "error");
 };

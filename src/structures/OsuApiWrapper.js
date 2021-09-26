@@ -3,21 +3,30 @@ const { OsuGameModes, OsuGameModesName} = require("./Constants.js");
 
 // Using v1 legacy osu api
 // Docs: https://github.com/ppy/osu-api/wiki
-const baseURL = "https://osu.ppy.sh/api";
 
+/** Represent class osu api */
 class OsuAPI {
   #token;
 
+  /**
+  * @param {string} - Your secret osu token
+  */
   constructor(osuToken) {
     if(!osuToken) throw new Error("Osu Token required");
+
+    /** 
+     * @property {string} baseURL - Base url osu api 
+     * */
+    this.baseURL = "https://osu.ppy.sh/api";
     this.#token = osuToken;
   }
 
   /**
    * Requesting Osu API
-   * @param {endpoints} <string> - Endpoints of the api
-   * @param {query} <string> - Insert some queries including endpoints
-   * @param {methods} <string>
+   * @param {string} endpoints - Endpoints of the api
+   * @param {string} query - Insert some queries including endpoints
+   * @param {string} methods
+   * @returns {Promise}
    * */
   #_request = (endpoints, query, methods = "GET") => {
     if(!endpoints || typeof endpoints !== "string") throw new TypeError("No endpoints specified");
@@ -25,7 +34,7 @@ class OsuAPI {
 
     return new Promise((resolve, reject) => {
       axios({
-        url: `${baseURL}${endpoints}?k=${this.#token}${query}`,
+        url: `${this.baseURL}${endpoints}?k=${this.#token}${query}`,
         method: methods
       }).then((res) => {
         resolve(res);
@@ -37,9 +46,9 @@ class OsuAPI {
 
   /**
 	* Get User Data
-	* @param {name} <string> - User id or name
-	* @param {mode} <string> - Ingame modes
-	* @return Promise<Osu_Data>
+	* @param {string} name - User id or name
+	* @param {string} mode - Ingame modes
+	* @returns {Promise}
 	* */
   getUser(name, mode = "standard") {
     if(!name || typeof name !== "string") throw new TypeError("No username specified");
@@ -55,10 +64,10 @@ class OsuAPI {
 
   /**
 	* Get User Recent Playing Data
-	* @param {name} <string> - User id or name
-	* @param {mode} <string> - Ingame modes
-	* @return Promise<Osu_Data>
-	* */
+  * @param {string} name - User id or name
+  * @param {string} mode - Ingame modes
+  * @returns {Promise}
+  * */
   getUserRecent(name, mode = "standard") {
     if(!name || typeof name !== "string") throw new TypeError("No username specified");
     return new Promise((resolve, reject) => {
@@ -72,11 +81,11 @@ class OsuAPI {
   }
 
   /**
-	 * Get User Best Performance Play Data
-	 * @param {name} <string> - User id or name
-	 * @param {mode} <string> - Ingame modes
-	 * @return Promise<Osu_Data>
-	 *  */
+	* Get User Best Performance Play Data
+  * @param {string} name - User id or name
+  * @param {string} mode - Ingame modes
+  * @returns {Promise}
+  * */
   getUserBest(name, mode = "standard") {
     if(!name || typeof name !== "string") throw new TypeError("No username specified");
     return new Promise((resolve, reject) => {
