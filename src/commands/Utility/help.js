@@ -37,7 +37,7 @@ module.exports.run = async (bot, msg, args) => {
 **Usage:** \`${cur.usage.replace(/{prefix}/, bot.config.CommandOptions.prefix[0])}\`
 `,
           footer: {
-              text: "Syntax: [required], <optional>, (comments)"
+            text: "Syntax: [required], <optional>, (comments)"
           }
         }
 

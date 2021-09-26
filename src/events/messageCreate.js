@@ -21,7 +21,6 @@ module.exports = async (bot, msg) => {
   } else {
     let expireTime = bot.cooldown.get(`${command}-${msg.author.id}`).time + (bot.commands.get(command).config.cooldown * 1000);
     let timeLeft = expireTime - Date.now();
-    console.log(timeLeft)
     if(bot.cooldown.get(`${command}-${msg.author.id}`).limit >= bot.commands.get(command).config.ratelimit) {
       return msg.channel.createMessage(`${msg.author.mention} you're being ratelimited, please wait **${timeLeft / 1000}s**`).then((message) => {
         setTimeout(() => {
@@ -29,10 +28,10 @@ module.exports = async (bot, msg) => {
         }, 7000);
       });
     }
-    bot.cooldown.get(`${command}-${msg.author.id}`).limit += 1
+    bot.cooldown.get(`${command}-${msg.author.id}`).limit += 1;
     //bot.cooldown.set(`${command}-${msg.author.id}`, {limit: bot.cooldown.get(`${command}-${msg.author.id}`).limit + 1});
   }
-  console.log(bot.cooldown)
+  console.log(bot.cooldown);
   setTimeout(() => {
     bot.cooldown.delete(`${command}-${msg.author.id}`);
   }, bot.commands.get(command).config.cooldown * 1000);
