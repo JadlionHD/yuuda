@@ -3,7 +3,7 @@
 English Language: Soon
 
 # Requirements
-1. NodeJS v12 Above
+1. NodeJS v12 or Above
 2. npm or yarn
 
 # Setup
