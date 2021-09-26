@@ -3,7 +3,7 @@
 English Language: Soon
 
 # Requirements
-1. NodeJS v12 Above
+1. NodeJS v12 or Above
 2. npm or yarn
 
 # Setup
@@ -12,7 +12,7 @@ English Language: Soon
 ```
 DISCORD_TOKEN=YOURTOKEN
 OSU_TOKEN=YOUROSUTOKEN
-PORT=NUMBERPORT
+PORT=NUMBERPORT // Optional
 ```
 
 - Setelah itu untuk memulai botnya kalian perlu melakukan:
