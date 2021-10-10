@@ -1,5 +1,5 @@
 # yuudachi-poi 
-![GitHub repo size](https://img.shields.io/github/repo-size/jadlionhd/yuudachi-poi) ![GitHub contributors](https://img.shields.io/github/contributors/jadlionhd/yuudachi-poi)   
+![GitHub repo size](https://img.shields.io/github/repo-size/jadlionhd/yuuda) ![GitHub contributors](https://img.shields.io/github/contributors/jadlionhd/yuudachi-poi)   
 English Language: Soon
 
 # Requirements

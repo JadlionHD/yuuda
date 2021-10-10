@@ -1,4 +1,5 @@
 const anilist = require("../../structures/Anilist.js");
+const moment = require("moment");
 
 module.exports.run = async (bot, msg, args) => {
   let argument = args.join(" ");
@@ -12,11 +13,11 @@ module.exports.run = async (bot, msg, args) => {
         embed: {
           title: `${body.data.Media.title.romaji}`,
           color: bot.config.colors.success,
-          description: bot.util.trim(desc.replace(/<\/?[a-z]*>/g, ""), 1024)[0],
+          description: bot.util.trim(desc.replace(/<\/?[a-z]*\/?>/g, ""), 1024)[0],
           fields: [
             {
               name: "Episodes",
-              value: `${body.data.Media.episodes || "Unknown"} Episodes`,
+              value: `${body.data.Media.episodes || "??"} Episodes`,
               inline: true
             },
             {
@@ -35,7 +36,7 @@ module.exports.run = async (bot, msg, args) => {
             },
             {
               name: "Start Date",
-              value: `${body.data.Media.startDate.month}/${body.data.Media.startDate.day}/${body.data.Media.startDate.year}`,
+              value: `<t:${moment({ year: body.data.Media.startDate.year, month: body.data.Media.startDate.month, day: body.data.Media.startDate.day }).unix()}:R>`,
               inline: true
             },
             {

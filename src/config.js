@@ -1,5 +1,7 @@
+const Package = require("../package.json");
+
 module.exports = {
-  DISCORD_TOKEN: process.env.DISCORD_TOKEN,
+  package: Package,
   debug: false,
   ClientOptions: {
     maxShards: "auto",

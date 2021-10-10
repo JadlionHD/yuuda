@@ -1,12 +1,18 @@
 module.exports.run = async (bot, msg, args) => {
   msg.channel.createMessage({
     embed: {
+      title: bot.client.user.username,
       color: bot.config.colors.success,
+      thumbnail: {
+        url: bot.client.user.dynamicAvatarURL("jpg", 1080)
+      },
       description: `
-**Client Info**
 \`\`\`yaml
-Uptime: ${bot.util.secondParser(process.uptime())}
-RAM Usage: ${(process.memoryUsage().rss / 1024 / 1024).toFixed(2)+"MB"}
+Bot Version  : v${bot.config.package.version}
+Library      : Eris v${bot.config.package.dependencies.eris.replace("^", "")}
+Guilds       : ${bot.client.guilds.size}
+Uptime       : ${bot.util.secondParser(process.uptime())}
+RAM Usage    : ${(process.memoryUsage().rss / 1024 / 1024).toFixed(2)+"MB"}
 \`\`\`
 `
     }

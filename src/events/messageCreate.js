@@ -31,7 +31,6 @@ module.exports = async (bot, msg) => {
     bot.cooldown.get(`${command}-${msg.author.id}`).limit += 1;
     //bot.cooldown.set(`${command}-${msg.author.id}`, {limit: bot.cooldown.get(`${command}-${msg.author.id}`).limit + 1});
   }
-  console.log(bot.cooldown);
   setTimeout(() => {
     bot.cooldown.delete(`${command}-${msg.author.id}`);
   }, bot.commands.get(command).config.cooldown * 1000);
