@@ -14,15 +14,16 @@ class MainBot {
     this.util = require("./Util.js");
     this.logger = require("./Logger.js");
     this.osu = new OsuAPI(process.env.OSU_TOKEN);
-    this.commands = new Map();
+    this.commands = new Collection();
     this.aliases = new Map();
     this.cooldown = new Map();
     this.#commandsLoad();
     this.#eventsLoad();
   }
 
-  Ready() {
+  start() {
     this.client.connect();
+    this.logger.log(`Loaded ${this.commands.size} commands!`, "ready");
     setTimeout(() => {
       require("./Express.js").WebService(this);
       //console.log(this.cmds)

@@ -3,22 +3,19 @@ const { readdirSync } = require("fs");
 module.exports.run = async (bot, msg, args) => {
   let msgEmbed = {
     embed: {
-      title: "List commands",
+      title: `${bot.client.user.username} help menu`,
       color: bot.config.colors.success,
-      fields: [
-        {
-          name: "Utility",
-          value: "help, ping, stats"
-        },
-        {
-          name: "Fun",
-          value: "howgay"
-        },
-        {
-          name: "Information",
-          value: "anime, osu"
-        }
-      ]
+      description: `
+Did you find a bug? Hey feel free to open some [issues](${bot.config.package.bugs.url}).
+Or you want to contribute to this bot? well you can by visit this [github](${bot.config.package.homepage}).
+
+**List commands available:**
+${bot.commands.map(f => {if(f.config.name !== "eval") return `\`${f.config.name}\``;}).join(", ").replace(/,/gi, "")}
+`,
+      footer: {
+        text: `${bot.config.CommandOptions.prefix[0]}help <command> to get info about specific command`,
+        icon_url: msg.author.dynamicAvatarURL("jpg", 1080)
+      }
     }
   };
   // readdirSync("./src/commands/Fun").map(str => `\`${str[0] + str.slice(1)}\` `).join(" ").replace(/.js/g, "")
@@ -37,7 +34,8 @@ module.exports.run = async (bot, msg, args) => {
 **Usage:** \`${cur.usage.replace(/{prefix}/, bot.config.CommandOptions.prefix[0])}\`
 `,
           footer: {
-            text: "Syntax: [required], <optional>, (comments)"
+            text: "Syntax: [required], <optional>, (comments)",
+            icon_url: msg.author.dynamicAvatarURL("jpg", 1080)
           }
         }
 

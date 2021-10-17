@@ -1,22 +1,22 @@
-const anilist = require("../../structures/Anilist.js");
+const moment = require("moment");
 
 module.exports.run = async (bot, msg, args) => {
   let argument = args.join(" ");
   if(!argument) return msg.channel.createMessage(`${msg.author.mention}, you're missing some argument poi.`);
 
-  anilist.searchAnime(argument).then(body => {
+  bot.config.anilist.searchAnime(argument).then(body => {
     if(body.data.Media.isAdult === false || msg.channel.nsfw === true) {
       let starred = `${"★".repeat(Math.floor((body.data.Media.averageScore || 20)/20))} ${body.data.Media.averageScore}%`;
       let desc = body.data.Media.description || "None";
       let msgEmbed = {
         embed: {
           title: `${body.data.Media.title.romaji}`,
-          color: bot.config.colors.success,
-          description: bot.util.trim(desc.replace(/<\/?[a-z]*>/g, ""), 1024)[0],
+          color: bot.config.colors.green,
+          description: bot.util.trim(desc.replace(/<\/?[a-z]*\/?>/g, ""), 1024)[0],
           fields: [
             {
               name: "Episodes",
-              value: `${body.data.Media.episodes || "Unknown"} Episodes`,
+              value: `${body.data.Media.episodes || "??"} Episodes`,
               inline: true
             },
             {
@@ -35,7 +35,7 @@ module.exports.run = async (bot, msg, args) => {
             },
             {
               name: "Start Date",
-              value: `${body.data.Media.startDate.month}/${body.data.Media.startDate.day}/${body.data.Media.startDate.year}`,
+              value: `<t:${moment({ year: body.data.Media.startDate.year, month: body.data.Media.startDate.month, day: body.data.Media.startDate.day }).unix()}:R>`,
               inline: true
             },
             {
@@ -48,7 +48,7 @@ module.exports.run = async (bot, msg, args) => {
             url: body.data.Media.coverImage.large
           },
 			        footer: {
-			        	text: "Powered by AniList",
+			        	text: "Powered by AniList API",
 			        	icon_url: "https://anilist.co/img/icons/android-chrome-512x512.png"
 			        },
           image: {
@@ -71,9 +71,9 @@ module.exports.config = {
   aliases: [],
   description: "search a anime",
   usage: "{prefix}anime [name anime]",
-  cooldown: 5,
+  cooldown: 10,
   category: "Information",
-  ratelimit: 5,
+  ratelimit: 3,
   requirements: {
     permissions: {}
   }

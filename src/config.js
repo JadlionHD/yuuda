@@ -1,5 +1,9 @@
+const Package = require("../package.json");
+const Anilist = require("./structures/Anilist.js");
+
 module.exports = {
-  DISCORD_TOKEN: process.env.DISCORD_TOKEN,
+  package: Package,
+  anilist: Anilist,
   debug: false,
   ClientOptions: {
     maxShards: "auto",
