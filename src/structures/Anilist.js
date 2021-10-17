@@ -57,19 +57,25 @@ query {
         data: {
           query: `
 query {
-  Character (search: "${name}") {
+  Character(search: "${name}") {
     name {
-      first
-      last
       full
-      native
     }
+    siteUrl
+    gender
+    age
+    favourites
     image {
       large
-      medium
+    }
+    media {
+      nodes {
+        title {
+          romaji
+        }
+      }
     }
     description
-    siteUrl
   }
 }
 `

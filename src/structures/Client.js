@@ -21,8 +21,9 @@ class MainBot {
     this.#eventsLoad();
   }
 
-  Ready() {
+  start() {
     this.client.connect();
+    this.logger.log(`Loaded ${this.commands.size} commands!`, "ready");
     setTimeout(() => {
       require("./Express.js").WebService(this);
       //console.log(this.cmds)

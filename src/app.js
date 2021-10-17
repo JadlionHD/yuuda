@@ -5,4 +5,4 @@ const config = require("./config.js");
 
 const client = new MainBot(process.env.DISCORD_TOKEN);
 
-client.Ready();
+client.start();
