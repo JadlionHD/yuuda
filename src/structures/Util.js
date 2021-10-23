@@ -98,6 +98,8 @@ module.exports = class Util {
   }
 
   static numberComa(ms) {
+    if(ms === null)
+      return null;
     return ms.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   }
 

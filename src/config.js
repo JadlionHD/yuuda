@@ -1,5 +1,6 @@
 const Package = require("../package.json");
 const Anilist = require("./structures/Anilist.js");
+const constants = require("./structures/Constants.js");
 
 module.exports = {
   package: Package,
@@ -20,17 +21,17 @@ module.exports = {
     }
   },
   CommandOptions: {
-    prefix: ["nimi ", "n!"],
+    prefix: ["yuda ", "poi ", "y?"],
     defaultHelpCommand: false,
-    description: "A JadMaid Bot",
+    description: "Just a simple bot",
     owner: "JadlionHD"
   },
-  ownerID: ["421307985827201024", "540560193277132800", "494219204610883594"],
+  ownerID: ["421307985827201024", "540560193277132800"],
   colors: {
     error: 0xFF0000,
     green: 0x00FF46,
     success: 0xC0C0C0,
     warning: 0xFFD100
   },
-  Constants: require("./structures/Constants.js")
+  Constants: constants
 };
