@@ -16,7 +16,7 @@ const WebService = (bot) => {
 
   app.get("/commands", (req, res) => {
     res.render("commands", {client: bot.client, config: bot.config, commands: bot.commands, webUrl: {fullUrl: `https://${req.get("host")}`}});
-  })
+  });
 
   app.listen(port, () => {
     logger.log("Web service has been started!", "ready");

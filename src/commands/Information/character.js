@@ -33,7 +33,7 @@ module.exports.run = (bot, msg, args) => {
           }
         ]
       }
-    }
+    };
     if(desc.length < 1023) {
       msgEmbed.embed.description = desc;
     } else {
@@ -43,8 +43,8 @@ module.exports.run = (bot, msg, args) => {
   }).catch((error) => {
     msg.channel.createMessage("There's some error poi, please try again poi");
     console.log(error);
-  })
-}
+  });
+};
 
 module.exports.config = {
   name: "character",
