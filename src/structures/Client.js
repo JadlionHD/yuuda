@@ -26,7 +26,6 @@ class MainBot {
     this.logger.log(`Loaded ${this.commands.size} commands!`, "ready");
     setTimeout(() => {
       require("./Express.js").WebService(this);
-      //console.log(this.cmds)
     }, 5 * 1000);
   }
 

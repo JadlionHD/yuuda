@@ -1,0 +1,73 @@
+* {
+	margin: 0;
+	padding: 0;
+	font-family: "Century Gothic", sans-serif;
+}
+#container {
+	color: white;
+	background-color: #121212;
+}
+
+#box, #flex-stats, #top-button {
+	text-align: center;
+}
+
+#box img {
+	border-radius: 100%;
+}
+
+#stats {
+	margin-top: 15px;
+	display: inline-flex;
+	flex-direction: row;
+}
+
+.flex-items {
+	margin: 20px;
+	margin-top: 70px;
+}
+
+.flex-items i {
+	font-size: 60px;
+}
+
+
+#top-button button {
+	display: inline-block;
+	margin: 20px;
+	margin-top: 70px;
+	margin-bottom: 70px;
+	transition-duration: 0.5s;
+	background-color: #4c4242;
+	border: none;
+	border-radius: 8px;
+	padding: 16px 32px;
+	font-size: 15px;
+	color: white;
+}
+#top-button button:hover {
+	color: #121212;
+	background-color: lightgray;
+}
+
+#footer-bottom {
+	text-align: center;
+	padding: 20px;
+	margin: auto;
+}
+
+/*Commands List*/
+.list-commands {
+	margin-left: 70px;
+	margin-right: 70px;
+	margin-bottom: 50px;
+	padding-left: 25px;
+	padding-top: 15px;
+	padding-bottom: 15px;
+	border-radius: 10px;
+	text-align: left;
+	background-color: #4c4242;
+}
+.list-commands ul {
+	padding-left: 25px;
+}
