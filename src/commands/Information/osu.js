@@ -1,4 +1,5 @@
 module.exports.run = async (bot, msg, args) => {
+  if(!args.join(" ")) return msg.channel.createMessage(`${msg.author.mention}, you're missing some argument poi.`);
   bot.osu.getUser(args[0], args[1]).then((res) => {
     msg.channel.createMessage({
       embed: {

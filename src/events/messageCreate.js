@@ -41,7 +41,7 @@ module.exports = async (bot, msg) => {
     msg.channel.createMessage({embed: {
       color: 0xFFD100,
       title: `${command} failed to run`,
-      description: "Please wait until it fixed"
+      description: `you can open some [issues](${bot.config.package.bugs.url}) if bugs appear.`
     }});
     console.log("Error", err.message, err.stack.split("\n"));
   }

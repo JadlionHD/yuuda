@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="icon" href="<%=client.user.dynamicAvatarURL("png", 1024)%>"
+	<meta property="og:title" content="<%=client.user.username%> website">
+	<meta property="og:description" content="<%=client.user.username%> list commands">
+	<meta property="og:url" content="<%=webUrl.fullUrl%>">
+	<meta property="og:image" content="<%=client.user.dynamicAvatarURL("png", 1024)%>">
+	<meta name="theme-color" content="#FFEA17">
+	<link rel="icon" href="<%=client.user.dynamicAvatarURL("png", 1024)%>">
+	<link rel="stylesheet" href="css/style.css">
+	<title><%=client.user.username%> - Discord Bot</title>
+</head>
+<body>
+	<div id="container">
+		<div id="box">
+			<br>
+			<h1>Commands List</h1>
+			<br>
+
+			<% commands.forEach(cmd => {%>
+			<% if(cmd.config.name === "eval") return;%>
+			<div class="list-commands">
+				<h3><%=cmd.config.name%></h3>
+				<ul>
+					<li>Description : <strong><%=cmd.config.description%></strong></li>
+					<li>Aliases : <strong><%=cmd.config.aliases.map(str => `${str[0] + str.slice(1)}`).join(", ") ? cmd.config.aliases.map(str => `${str[0] + str.slice(1)}`).join(", ") : "None"%></strong></li>
+					<li>Cooldown : <strong><%=cmd.config.cooldown%> seconds</strong></li>
+					<li>Usage : <strong><%=cmd.config.usage.replace(/{prefix}/, config.CommandOptions.prefix[0])%></strong></li>
+				</ul>
+			</div>
+			<% }) %>
+
+			<footer id="footer-bottom">
+				<h2>Made with Love &#10084</h2>
+			</footer>
+
+		</div>
+	</div>
+</body>
+</html>
