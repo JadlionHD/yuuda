@@ -1,7 +1,7 @@
 {
-	"name": "yuudachi-poi",
-	"version": "0.2.1",
-	"description": "a discord bot",
+	"name": "yuuda",
+	"version": "0.3.0-dev",
+	"description": "just a simple discord bot",
 	"main": "src/app.js",
 	"scripts": {
 		"start": "node src/app.js",
@@ -24,7 +24,7 @@
 		"chalk": "^4.1.0",
 		"dotenv": "^8.2.0",
 		"ejs": "^3.1.5",
-		"eris": "^0.15.1",
+		"eris": "^0.16.1",
 		"express": "^4.17.1",
 		"moment": "^2.29.1",
 		"yargs-parser": "^20.2.9"
