@@ -8,6 +8,7 @@ module.exports.run = async (bot, msg, args) => {
       description: `
 Did you find a bug? Hey feel free to open some [issues](${bot.config.package.bugs.url}).
 Or you want to contribute to this bot? well you can by visit this [github](${bot.config.package.homepage}).
+And hey you can also visit [${bot.client.user.username}](https://yuuda.jad.my.id) website.
 
 **List commands available:**
 ${bot.commands.map(f => {if(f.config.name !== "eval") return `\`${f.config.name}\``;}).join(", ").replace(/,/gi, "")}

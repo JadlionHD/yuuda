@@ -16,7 +16,7 @@
 <body>
 	<div id="container">
 		<div id="box">
-			<img src="<%=client.user.dynamicAvatarURL("png", 1024)%>" width="200" height="200">
+			<img src="<%=client.user.dynamicAvatarURL("png", 1024)%>" width="180" height="180">
 			<h2><%=client.user.username%></h2>
 			<br>
 			<h3><%=config.CommandOptions.description%></h3>
@@ -36,9 +36,15 @@
 			</div>
 		</div>	
 		<div id="top-button">
-			<button type="button" onclick="location.href='<%=webUrl.fullUrl + "/commands" %>'">Commands</button>
-			<button type="button" onclick="location.href='https://discord.gg/zCr2jeZ'">Discord Support</button>
-			<button type="button" onclick="location.href='https://github.com/JadlionHD/yuuda'">Github</button>
+			<a href="/commands">
+				<button>Commands</button>
+			</a>
+			<a href="https://discord.gg/zCr2jeZ">
+				<button>Discord Support</button>
+			</a>
+			<a href="https://github.com/JadlionHD/yuuda">
+				<button>Github</button>
+			</a>
 		</div>
 
 		<footer id="footer-bottom">

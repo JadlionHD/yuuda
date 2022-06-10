@@ -31,9 +31,11 @@
 	font-size: 60px;
 }
 
+#top-button a {
+	text-decoration: none;
+}
 
 #top-button button {
-	display: inline-block;
 	margin: 20px;
 	margin-top: 70px;
 	margin-bottom: 70px;
@@ -48,6 +50,8 @@
 #top-button button:hover {
 	color: #121212;
 	background-color: lightgray;
+	/*padding: 20px 35px;*/
+	transform: translateY(-10px) scale(1.1, 1.1);
 }
 
 #footer-bottom {

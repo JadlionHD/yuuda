@@ -1,7 +1,7 @@
 {
-	"name": "yuudachi-poi",
-	"version": "0.2.1",
-	"description": "a discord bot",
+	"name": "yuuda",
+	"version": "0.3.0-dev",
+	"description": "just a simple discord bot",
 	"main": "src/app.js",
 	"scripts": {
 		"start": "node src/app.js",
