@@ -1,6 +1,6 @@
 {
   "name": "yuuda",
-  "version": "0.3.0-dev",
+  "version": "0.2.2",
   "description": "just a simple discord bot",
   "main": "src/app.js",
   "scripts": {
